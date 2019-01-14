@@ -14,10 +14,10 @@ class Game {
     */
     createPhrases() {
         const phrases = ["All we know is that we dont know",
-        "we are all part of a masterplan",
-        "de you keep the receip for the friends that you buy",
-        "dont look back in anger",
-        "take me to the place where you go where nobody knows if its night or day"];
+        "We are all part of a masterplan",
+        "Do you keep the receipt for the friends that you buy",
+        "Dont look back in anger",
+        "Take me to the place where you go where nobody knows if its night or day"];
         return phrases;
     };
 }
