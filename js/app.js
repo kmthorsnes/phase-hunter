@@ -2,20 +2,6 @@
  * Project 4 - OOP Game App
  * app.js */
 
- console.log('💩Kalle er sjefen💩');
-
- const phrase = new Phrase();
- const game = new Game();
-
-
-
-
- // app.js to create a new instance of the `Game` class and add event listeners for the start button and onscreen keyboard buttons.
-
-
-
-// document.getElementById("btn__reset").addEventListener("click", startGame);
-
-// function startGame() {
-//     console.log("start game clicked");
-// }
+console.log('💩Kalle er sjefen💩');
+const phrase = new Phrase('Lorem ipsum dolor amet raclette slow-carb poke chicharrones mustache jianbing portland la croix cardigan put a bird on it. Kombucha franzen kogi, yr cardigan echo park cloud bread ennui viral adaptogen pug pok pok meditation master cleanse. Chia hammock cray, quinoa YOLO shaman chartreuse. ')
+console.log(`Phrase - phrase: ${phrase.phrase}`);

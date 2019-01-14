@@ -3,8 +3,9 @@
  * Game.js */
 
 class Game {
-    constructor(a, b) {
-        this.a = a;
-        this.b = b;
-      }
+    constructor() {
+        this.missed = 0;
+        this.phrases = [];
+        this.activePhrase = null;
+    }
 }
