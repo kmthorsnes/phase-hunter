@@ -8,14 +8,14 @@ class Phrase {
   }
 
   addPhraseToDisplay() {
-    const selectedPhrase = phrase.phrase;
-    var str = "<ul>";
+    let selectedPhrase = phrase.phrase;
+    let str = "<ul>";
     for (var i = 0; i < selectedPhrase.length; i++) {
       str += "<li class='hide letter " +selectedPhrase.charAt(i)+ "'>" + selectedPhrase.charAt(i) + "</li>";
     }
     str += "</ul>";
     document.getElementById("phrase").innerHTML = str;
-    
-    
+    document.body.innerHTML = document.body.innerHTML.replace(/hide letter  /g, 'hide space');
   }
+  
 }
