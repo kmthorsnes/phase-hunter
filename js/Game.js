@@ -2,6 +2,13 @@
  * Project 4 - OOP Game App
  * Game.js */
 
+// for getting random number 0-5
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
+
 class Game {
   constructor() {
     this.missed = 0;
@@ -25,4 +32,9 @@ class Game {
     ];
     return phrases;
   }
+  getRandomPhrase(){
+    let phraseNumber = getRandomInt(this.createPhrases().length)
+    return this.createPhrases()[phraseNumber].phrase;
+  }
+
 }
