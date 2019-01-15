@@ -4,15 +4,17 @@
 
 class Phrase {
     constructor(phrase){
-        this.phrase = phrase.toLowerCase();
+        this.phrase = phrase.phrase.toLowerCase();
     }
 
     addPhraseToDisplay(){
-        const selectedPhrase = Game.getRandomPhrase();
-        var str = "";
+        const selectedPhrase = phrase.phrase;
+        var str = '<ul>'
         for (var i = 0; i < selectedPhrase.length; i++) {
             str += '<li>'+ selectedPhrase.charAt(i) + '</li>';
-        }
-        document.getElementById("phrase").innerText = str; 
+          };
+          str += '</ul>';
+          document.getElementById("phrase").innerHTML = str;
     }
 };
+

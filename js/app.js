@@ -4,6 +4,7 @@
 
 
 const game = new Game();
-game.getRandomPhrase()
+const phrase = new Phrase(game.getRandomPhrase());
+phrase.addPhraseToDisplay();
 
 
