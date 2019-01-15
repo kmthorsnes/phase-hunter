@@ -34,7 +34,7 @@ class Game {
   }
   getRandomPhrase(){
     let phraseNumber = getRandomInt(this.createPhrases().length)
-    return this.createPhrases()[phraseNumber].phrase;
+    return game.phrases[phraseNumber];
   }
 
 }
