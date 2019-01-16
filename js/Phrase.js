@@ -4,11 +4,11 @@
 
 class Phrase {
   constructor(phrase) {
-    this.phrase = phrase.phrase.toLowerCase();
+    this.phrase = this.phrase.toLowerCase();
   }
 
   addPhraseToDisplay() {
-    let selectedPhrase = phrase.phrase;
+    let selectedPhrase = this.phrase;
     let str = "<ul>";
     for (var i = 0; i < selectedPhrase.length; i++) {
       str += "<li class='hide letter " +selectedPhrase.charAt(i)+ "'>" + selectedPhrase.charAt(i) + "</li>";
