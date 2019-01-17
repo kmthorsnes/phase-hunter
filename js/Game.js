@@ -8,12 +8,11 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
 
-
 class Game {
   constructor() {
     this.missed = 0;
     this.phrases = this.createPhrases();
-    this.activePhrase = this.phrase.addPhraseToDisplay();
+    this.activePhrase = this.getRandomPhrase();
   }
   /**
    * Creates phrases for use in game
@@ -34,17 +33,14 @@ class Game {
   }
   getRandomPhrase(){
     let phraseNumber = getRandomInt(this.createPhrases().length)
-    return game.phrases[phraseNumber];
+    return this.phrases[phraseNumber];
   }
 
   /**
   * Begins game by selecting a random phrase and displaying it to user
   */
   startGame() {
+    activePhrase().addPhraseToDisplay();
     document.getElementById("overlay").style.display = "none";
-    getRandomPhrase();
-    this.phrase.addPhraseToDisplay();
-
   };
-
 }
