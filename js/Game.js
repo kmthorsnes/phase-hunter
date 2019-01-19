@@ -40,7 +40,8 @@ class Game {
   * Begins game by selecting a random phrase and displaying it to user
   */
   startGame() {
-    activePhrase().addPhraseToDisplay();
     document.getElementById("overlay").style.display = "none";
+    const phrase = new Phrase(this.activePhrase);
+    phrase.addPhraseToDisplay();
   };
 }
