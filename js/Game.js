@@ -43,5 +43,6 @@ class Game {
     document.getElementById("overlay").style.display = "none";
     const phrase = new Phrase(this.activePhrase);
     phrase.addPhraseToDisplay();
+    console.log(phrase.phrase);
   };
 }
