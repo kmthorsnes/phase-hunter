@@ -46,8 +46,6 @@ class Game {
     console.log(phrase.phrase);
   };
 
-  handleInteraction(){
-    console.log("vi tester")
-  };
+  
 }
 
