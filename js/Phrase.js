@@ -30,6 +30,7 @@ class Phrase {
    * @param (string) letter - Letter to check
    */
   checkLetter(letter) {
-    includes(letter);
+    this.phrase.includes();
+    ;
   }
 }
