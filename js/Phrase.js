@@ -30,7 +30,8 @@ class Phrase {
    * @param (string) letter - Letter to check
    */
   checkLetter(letter) {
-    this.phrase.includes();
+    var phrase = this.phrase.split(" ");
+    phrase.includes(letter)
     ;
   }
 }
