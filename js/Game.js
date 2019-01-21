@@ -12,7 +12,7 @@ class Game {
   constructor() {
     this.missed = 0;
     this.phrases = this.createPhrases();
-    this.activePhrase = this.getRandomPhrase();
+    this.activePhrase = null;
   }
   /**
    * Creates phrases for use in game
@@ -41,11 +41,9 @@ class Game {
   */
   startGame() {
     document.getElementById("overlay").style.display = "none";
-    const phrase = new Phrase(this.activePhrase);
-    phrase.addPhraseToDisplay();
-    console.log(phrase.phrase);
+    this.activePhrase = new Phrase(game.getRandomPhrase());
+    this.activePhrase.addPhraseToDisplay();
+    console.log(this.activePhrase);
   };
-
-  
 }
 
