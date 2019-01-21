@@ -52,7 +52,7 @@ class Game {
   won
   */
   checkForWin() {
-    return !($("li").hasClass('hide') && $("li").hasClass('letter'));
+    return !$("li").hasClass('letter');
   };
 
 
