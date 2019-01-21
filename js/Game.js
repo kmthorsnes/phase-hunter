@@ -45,5 +45,18 @@ class Game {
     this.activePhrase.addPhraseToDisplay();
     console.log(this.activePhrase);
   };
+
+  /**
+  * Checks for winning move
+  * @return {boolean} True if game has been won, false if game wasn't
+  won
+  */
+  checkForWin() {
+    return !($("li").hasClass('hide') && $("li").hasClass('letter'));
+  };
+
+
+
+
 }
 
