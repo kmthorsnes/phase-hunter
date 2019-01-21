@@ -55,6 +55,29 @@ class Game {
     return !$("li").hasClass('letter');
   };
 
+  /**
+  * Increases the value of the missed property
+  * Removes a life from the scoreboard
+  * Checks if player has remaining lives and ends game if player is out
+  */
+  removeLife() {
+    $("img[src$='images/liveHeart.png']").first().attr('src', 'images/lostHeart.png')
+    .removeClass().addClass('lostHeart');
+    this.missed ++;
+    if (this.missed == 5) {
+    this.gameOver();
+    }
+  };
+
+  /**
+* Displays game over message
+* @param {boolean} gameWon - Whether or not the user won the game
+*/
+gameOver(gameWon) {
+  console.log('game over - poor soul');
+};
+
+
 
 
 
