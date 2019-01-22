@@ -168,44 +168,23 @@ class Game {
       if (pushedKey.match(/[a-z]/i)) {
         if (game.activePhrase.phrase.includes(pushedKey)) {
           game.activePhrase.showMatchedLetter(pushedKey);
-          $('button:contains('+ pushedKey+ ')')
-          .removeClass()
-          .addClass("chosen");
-          $("button:contains('Start Game')")
-          .removeClass();
+          $("button:contains(" + pushedKey + ")")
+            .removeClass()
+            .addClass("chosen");
+          $("button:contains('Start Game')").removeClass();
           if (game.checkForWin() == true) {
             game.gameOver();
           }
+        } else {
+          if (!$("button:contains(" + pushedKey + ")").hasClass("wrong")) {
+            $("button:contains(" + pushedKey + ")")
+              .removeClass()
+              .addClass("wrong");
+            $("button:contains('Start Game')").removeClass();
+            game.removeLife();
+          }
         }
-        
       }
-      
-      }
-    )};
-
+    });
   }
-  
-
-
-
-      // if (pushedKey.match(/[a-z]/i)) {
-      //   if (game.activePhrase.phrase.includes(pushedKey)) {
-      //     game.activePhrase.showMatchedLetter(pushedKey);
-      //   }
-      // //  $(this)
-      //       .removeClass()
-      //       .addClass("chosen");
-      //     if (game.checkForWin() == true) {
-      //       game.gameOver();
-      //     }
-      //   } else {
-      //     if (!$(this).hasClass("wrong")) {
-      //       $(this)
-      //         .removeClass()
-      //         .addClass("wrong");
-      //       game.removeLife();
-      //     }
-      //   }
-      // }
-    
-
+}
