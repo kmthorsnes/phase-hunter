@@ -85,7 +85,9 @@ class Game {
       document.getElementById("game-over-message").innerText =
         "Sorry, but you lost :( Better luck next time";
       // Personalization: Adds sound effect
-      var trombone = new Audio('http://soundbible.com/grab.php?id=1830&type=mp3');
+      var trombone = new Audio(
+        "http://soundbible.com/grab.php?id=1830&type=mp3"
+      );
       trombone.play();
 
       document
@@ -112,7 +114,9 @@ class Game {
       document.getElementById("game-over-message").innerText =
         "Congratulations :) You won!";
       // Personalization: Adds sound effect
-      var fanfare = new Audio('http://soundbible.com/grab.php?id=1823&type=mp3');
+      var fanfare = new Audio(
+        "http://soundbible.com/grab.php?id=1823&type=mp3"
+      );
       fanfare.play();
 
       document
@@ -136,29 +140,6 @@ class Game {
   }
 
   handleInteraction() {
-    document.addEventListener('keypress', (e) => {
-      let pressedKey = e.key;
-      if (pressedKey.match(/[a-z]/i)) {
-        if (game.activePhrase.phrase.includes(pressedKey)) {
-          game.activePhrase.showMatchedLetter(pressedKey);
-          $(this)
-            .removeClass()
-            .addClass("chosen");
-           if (game.checkForWin() == true) {
-              game.gameOver();
-              
-           }
-        } else {
-          if (!$(this).hasClass("wrong")) {
-            $(this)
-              .removeClass()
-              .addClass("wrong");
-            game.removeLife();
-          }
-        }
-    }
-      });
-
     $(".key").click(function() {
       let pressedKey = $(this).html();
       console.log(game.activePhrase.phrase);
@@ -167,9 +148,9 @@ class Game {
         $(this)
           .removeClass()
           .addClass("chosen");
-         if (game.checkForWin() == true) {
-            game.gameOver();
-         }
+        if (game.checkForWin() == true) {
+          game.gameOver();
+        }
       } else {
         if (!$(this).hasClass("wrong")) {
           $(this)
@@ -179,5 +160,52 @@ class Game {
         }
       }
     });
+
+    // Attempt of adding functionality for keystrokes to work
+    $("body").keypress(function(e) {
+      let pushedKey = e.key;
+      console.log(pushedKey);
+      if (pushedKey.match(/[a-z]/i)) {
+        if (game.activePhrase.phrase.includes(pushedKey)) {
+          game.activePhrase.showMatchedLetter(pushedKey);
+          $('button:contains('+ pushedKey+ ')')
+          .removeClass()
+          .addClass("chosen");
+          $("button:contains('Start Game')")
+          .removeClass();
+          if (game.checkForWin() == true) {
+            game.gameOver();
+          }
+        }
+        
+      }
+      
+      }
+    )};
+
   }
-}
+  
+
+
+
+      // if (pushedKey.match(/[a-z]/i)) {
+      //   if (game.activePhrase.phrase.includes(pushedKey)) {
+      //     game.activePhrase.showMatchedLetter(pushedKey);
+      //   }
+      // //  $(this)
+      //       .removeClass()
+      //       .addClass("chosen");
+      //     if (game.checkForWin() == true) {
+      //       game.gameOver();
+      //     }
+      //   } else {
+      //     if (!$(this).hasClass("wrong")) {
+      //       $(this)
+      //         .removeClass()
+      //         .addClass("wrong");
+      //       game.removeLife();
+      //     }
+      //   }
+      // }
+    
+
