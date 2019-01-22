@@ -7,8 +7,6 @@ document.getElementById("btn__reset").addEventListener("click", function(){
     console.log("you clicked me");
     game.startGame();
     game.handleInteraction();
-    
-    
 })
 
     
