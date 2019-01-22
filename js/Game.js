@@ -44,6 +44,7 @@ class Game {
     this.activePhrase = new Phrase(game.getRandomPhrase());
     this.activePhrase.addPhraseToDisplay();
     console.log(this.activePhrase.phrase);
+    this.missed = 0;
   }
 
   /**
@@ -68,7 +69,7 @@ class Game {
       .addClass("lostHeart");
     this.missed++;
     if (this.missed == 5) {
-      this.gameOver();
+      game.gameOver();
     }
   }
 
@@ -96,17 +97,12 @@ class Game {
             "src",
             "images/liveHeart.png"
           );
-          $("img[src$='images/lostHeart.png']").attr(
-            "src",
-            "images/liveHeart.png"
-          );
           $(".chosen")
             .removeClass()
             .addClass("key");
           $(".wrong")
             .removeClass()
             .addClass("key");
-          game = new Game();
           game.startGame();
           game.handleInteraction();
         });
@@ -133,12 +129,12 @@ class Game {
           $(".wrong")
             .removeClass()
             .addClass("key");
-          game = new Game();
           game.startGame();
           game.handleInteraction();
         });
     }
   }
+
   handleInteraction() {
     document.addEventListener('keypress', (e) => {
       let pressedKey = e.key;
@@ -150,6 +146,7 @@ class Game {
             .addClass("chosen");
            if (game.checkForWin() == true) {
               game.gameOver();
+              
            }
         } else {
           if (!$(this).hasClass("wrong")) {
