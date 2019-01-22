@@ -83,34 +83,53 @@ class Game {
       document.getElementById("overlay").setAttribute("class", "lose");
       document.getElementById("game-over-message").innerText =
         "Sorry, but you lost :( Better luck next time";
-      document.getElementById("btn__reset").addEventListener("click", function(){
+      document
+        .getElementById("btn__reset")
+        .addEventListener("click", function() {
           document.getElementById("overlay").style.display = "none";
-          
-          $("img[src$='images/lostHeart.png']").attr("src", "images/liveHeart.png");
-          $("img[src$='images/lostHeart.png']").attr("src", "images/liveHeart.png");
-          $(".chosen").removeClass().addClass("key");
-          $(".wrong").removeClass().addClass("key");
+
+          $("img[src$='images/lostHeart.png']").attr(
+            "src",
+            "images/liveHeart.png"
+          );
+          $("img[src$='images/lostHeart.png']").attr(
+            "src",
+            "images/liveHeart.png"
+          );
+          $(".chosen")
+            .removeClass()
+            .addClass("key");
+          $(".wrong")
+            .removeClass()
+            .addClass("key");
           game = new Game();
           game.startGame();
           game.handleInteraction();
-      })
+        });
     } else {
-      console.log("game over win");
       document.getElementById("overlay").style.display = "";
       document.getElementById("overlay").setAttribute("class", "win");
       document.getElementById("game-over-message").innerText =
         "Congratulations :) You won!";
-      
-      
-        document.getElementById("btn__reset").addEventListener("click", function(){
-        document.getElementById("overlay").style.display = "none";
-        $("img[src$='images/lostHeart.png']").attr("src", "images/liveHeart.png");
-        $(".chosen").removeClass().addClass("key");
-        $(".wrong").removeClass().addClass("key");
-        game = new Game();
-        game.startGame();
-        game.handleInteraction();
-      })
+
+      document
+        .getElementById("btn__reset")
+        .addEventListener("click", function() {
+          document.getElementById("overlay").style.display = "none";
+          $("img[src$='images/lostHeart.png']").attr(
+            "src",
+            "images/liveHeart.png"
+          );
+          $(".chosen")
+            .removeClass()
+            .addClass("key");
+          $(".wrong")
+            .removeClass()
+            .addClass("key");
+          game = new Game();
+          game.startGame();
+          game.handleInteraction();
+        });
     }
   }
   handleInteraction() {
@@ -122,6 +141,9 @@ class Game {
         $(this)
           .removeClass()
           .addClass("chosen");
+         if (game.checkForWin() == true) {
+            game.gameOver();
+         }
       } else {
         if (!$(this).hasClass("wrong")) {
           $(this)

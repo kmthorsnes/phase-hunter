@@ -39,10 +39,5 @@ class Phrase {
   */
   showMatchedLetter(letter) {
     $('.hide.letter.'+letter).removeClass().addClass('show');
-    
-    if (!$("li").hasClass('letter') == true) 
-      {
-        game.gameOver();
-      } 
   };
 }
