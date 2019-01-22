@@ -38,7 +38,10 @@ class Phrase {
   * @param (string) letter - Letter to display
   */
   showMatchedLetter(letter) {
-    $('.hide.letter.'+letter).removeClass().addClass('show'); 
+    $('.hide.letter.'+letter).removeClass().addClass('show');
+    if (!$("li").hasClass('letter') == true) 
+      {
+        game.gameOver();
+      } 
   };
-
 }

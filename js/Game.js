@@ -31,20 +31,20 @@ class Game {
     ];
     return phrases;
   }
-  getRandomPhrase(){
-    let phraseNumber = getRandomInt(this.createPhrases().length)
+  getRandomPhrase() {
+    let phraseNumber = getRandomInt(this.createPhrases().length);
     return this.phrases[phraseNumber];
   }
 
   /**
-  * Begins game by selecting a random phrase and displaying it to user
-  */
+   * Begins game by selecting a random phrase and displaying it to user
+   */
   startGame() {
     document.getElementById("overlay").style.display = "none";
     this.activePhrase = new Phrase(game.getRandomPhrase());
     this.activePhrase.addPhraseToDisplay();
     console.log(this.activePhrase);
-  };
+  }
 
   /**
   * Checks for winning move
@@ -52,34 +52,46 @@ class Game {
   won
   */
   checkForWin() {
-    return !$("li").hasClass('letter');
-  };
+    return !$("li").hasClass("letter");
+  }
 
   /**
-  * Increases the value of the missed property
-  * Removes a life from the scoreboard
-  * Checks if player has remaining lives and ends game if player is out
-  */
+   * Increases the value of the missed property
+   * Removes a life from the scoreboard
+   * Checks if player has remaining lives and ends game if player is out
+   */
   removeLife() {
-    $("img[src$='images/liveHeart.png']").first().attr('src', 'images/lostHeart.png')
-    .removeClass().addClass('lostHeart');
-    this.missed ++;
+    $("img[src$='images/liveHeart.png']")
+      .first()
+      .attr("src", "images/lostHeart.png")
+      .removeClass()
+      .addClass("lostHeart");
+    this.missed++;
     if (this.missed == 5) {
-    this.gameOver();
+      this.gameOver();
     }
-  };
+  }
 
   /**
-* Displays game over message
-* @param {boolean} gameWon - Whether or not the user won the game
-*/
-gameOver(gameWon) {
-  console.log('game over - poor soul');
-};
+   * Displays game over message
+   * Whether or not the user won the game
+   */
+  gameOver() {
+    if (this.missed == 5) {
+      console.log("game over lose");
+      document.getElementById("overlay").style.display = "block";
+      document.getElementById("overlay").setAttribute("class", "lose");
+      document.getElementById("game-over-message").innerText =
+        "Sorry, but you lost :( Better luck next time";
+    } else {
+      console.log("game over win");
+      document.getElementById("overlay").style.display = "block";
+      document.getElementById("overlay").setAttribute("class", "win");
+      document.getElementById("game-over-message").innerText =
+        "Congratulations :) You won!";
+    }
+  }
 
-
-
-
+  
 
 }
-
