@@ -83,6 +83,10 @@ class Game {
       document.getElementById("overlay").setAttribute("class", "lose");
       document.getElementById("game-over-message").innerText =
         "Sorry, but you lost :( Better luck next time";
+      // Personalization: Adds sound effect
+      var trombone = new Audio('http://soundbible.com/grab.php?id=1830&type=mp3');
+      trombone.play();
+
       document
         .getElementById("btn__reset")
         .addEventListener("click", function() {
@@ -111,6 +115,9 @@ class Game {
       document.getElementById("overlay").setAttribute("class", "win");
       document.getElementById("game-over-message").innerText =
         "Congratulations :) You won!";
+      // Personalization: Adds sound effect
+      var fanfare = new Audio('http://soundbible.com/grab.php?id=1823&type=mp3');
+      fanfare.play();
 
       document
         .getElementById("btn__reset")
