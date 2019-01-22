@@ -140,6 +140,28 @@ class Game {
     }
   }
   handleInteraction() {
+    document.addEventListener('keypress', (e) => {
+      let pressedKey = e.key;
+      if (pressedKey.match(/[a-z]/i)) {
+        if (game.activePhrase.phrase.includes(pressedKey)) {
+          game.activePhrase.showMatchedLetter(pressedKey);
+          $(this)
+            .removeClass()
+            .addClass("chosen");
+           if (game.checkForWin() == true) {
+              game.gameOver();
+           }
+        } else {
+          if (!$(this).hasClass("wrong")) {
+            $(this)
+              .removeClass()
+              .addClass("wrong");
+            game.removeLife();
+          }
+        }
+    }
+      });
+
     $(".key").click(function() {
       let pressedKey = $(this).html();
       console.log(game.activePhrase.phrase);
