@@ -43,7 +43,7 @@ class Game {
     document.getElementById("overlay").style.display = "none";
     this.activePhrase = new Phrase(game.getRandomPhrase());
     this.activePhrase.addPhraseToDisplay();
-    console.log(this.activePhrase);
+    console.log(this.activePhrase.phrase);
   }
 
   /**
@@ -79,19 +79,35 @@ class Game {
   gameOver() {
     if (this.missed == 5) {
       console.log("game over lose");
-      document.getElementById("overlay").style.display = "block";
+      document.getElementById("overlay").style.display = "";
       document.getElementById("overlay").setAttribute("class", "lose");
       document.getElementById("game-over-message").innerText =
         "Sorry, but you lost :( Better luck next time";
     } else {
       console.log("game over win");
-      document.getElementById("overlay").style.display = "block";
+      document.getElementById("overlay").style.display = "";
       document.getElementById("overlay").setAttribute("class", "win");
       document.getElementById("game-over-message").innerText =
         "Congratulations :) You won!";
     }
   }
-
-  
-
+  handleInteraction() {
+    $(".key").click(function() {
+      let pressedKey = $(this).html();
+      console.log(game.activePhrase.phrase);
+      if (game.activePhrase.phrase.includes(pressedKey)) {
+        game.activePhrase.showMatchedLetter(pressedKey);
+        $(this)
+          .removeClass()
+          .addClass("chosen");
+      } else {
+        if (!$(this).hasClass("wrong")) {
+          $(this)
+            .removeClass()
+            .addClass("wrong");
+          game.removeLife();
+        }
+      }
+    });
+  }
 }
