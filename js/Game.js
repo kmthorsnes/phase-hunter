@@ -68,6 +68,12 @@ class Game {
       .removeClass()
       .addClass("lostHeart");
     this.missed++;
+    if (this.missed == 4) {
+      var honk = new Audio(
+        "http://soundbible.com/grab.php?id=583&type=mp3"
+      );
+      honk.play();
+    }
     if (this.missed == 5) {
       game.gameOver();
     }
@@ -118,6 +124,10 @@ class Game {
         "http://soundbible.com/grab.php?id=1823&type=mp3"
       );
       fanfare.play();
+
+      
+      
+      
 
       document
         .getElementById("btn__reset")
