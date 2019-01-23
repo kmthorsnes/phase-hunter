@@ -44,7 +44,6 @@ class Game {
     $('#hint').remove();
     this.activePhrase = new Phrase(game.getRandomPhrase());
     this.activePhrase.addPhraseToDisplay();
-    console.log(this.activePhrase.phrase);
     this.missed = 0;
   }
 
@@ -101,7 +100,6 @@ class Game {
    */
   gameOver() {
     if (this.missed == 5) {
-      console.log("game over lose");
       document.getElementById("overlay").style.display = "";
       document.getElementById("overlay").setAttribute("class", "lose");
       document.getElementById("game-over-message").innerText =
@@ -168,7 +166,6 @@ class Game {
   handleInteraction() {
     $(".key").click(function() {
       let pressedKey = $(this).html();
-      console.log(game.activePhrase.phrase);
       if (game.activePhrase.phrase.includes(pressedKey)) {
         game.activePhrase.showMatchedLetter(pressedKey);
         $(this)
@@ -190,7 +187,6 @@ class Game {
     // Attempt of adding functionality for keystrokes to work
     $("body").keypress(function(e) {
       let pushedKey = e.key;
-      console.log(pushedKey);
       if (pushedKey.match(/[a-z]/i)) {
         if (game.activePhrase.phrase.includes(pushedKey)) {
           game.activePhrase.showMatchedLetter(pushedKey);
