@@ -20,13 +20,13 @@ class Game {
    */
   createPhrases() {
     const phrases = [
-      { phrase: "All we know is that we dont know" },
-      { phrase: "We are all part of a masterplan" },
-      { phrase: "Do you keep the receipt for the friends that you buy" },
-      { phrase: "Dont look back in anger" },
+      { phrase: "Imagine all the people Living life in peace" },
+      { phrase: "She says I am the one but the kid is not my son" },
+      { phrase: "Fly me to the moon Let me play among the stars" },
+      { phrase: "You and I are gonna live forever" },
       {
         phrase:
-          "Take me to the place where you go where nobody knows if its night or day"
+          "Got your lipstick mark still on your coffee cup"
       }
     ];
     return phrases;
@@ -41,6 +41,7 @@ class Game {
    */
   startGame() {
     document.getElementById("overlay").style.display = "none";
+    $('#hint').remove();
     this.activePhrase = new Phrase(game.getRandomPhrase());
     this.activePhrase.addPhraseToDisplay();
     console.log(this.activePhrase.phrase);
@@ -73,21 +74,21 @@ class Game {
         "http://soundbible.com/grab.php?id=1377&type=wav"
       );
       warning.play();
-
-      // Code base from: http://jsfiddle.net/xsATz/1/
-
-      function fadeInOut () {
-        $("img[src$='images/liveHeart.png']").fadeIn(1000, function () {
-          $("img[src$='images/liveHeart.png']").fadeOut(1500, function () {
-            $("img[src$='images/liveHeart.png']").fadeIn(1500, function () {
-                    setTimeout(fadeInOut, 500);
-                });
-            });
-        });
-    }
-    fadeInOut();
-
-     
+      if (this.activePhrase.phrase == "imagine all the people living life in peace") {
+        $('#banner').append('<div id="hint"><h2 style="font-size:20px;">Looks like you need a hint :)</h2><img id="theImg" src="https://karlmagnus.no/img/john.png" /> </div>');
+      }
+      if (this.activePhrase.phrase == "you and i are gonna live forever") {
+        $('#banner').append('<div id="hint"><h2 style="font-size:20px;">Looks like you need a hint :)</h2><img id="theImg" src="https://karlmagnus.no/img/oasis.png" /> </div>');
+      }
+      if (this.activePhrase.phrase == "got your lipstick mark still on your coffee cup") {
+        $('#banner').append('<div id="hint"><h2 style="font-size:20px;">Looks like you need a hint :)</h2><img id="theImg" src="https://karlmagnus.no/img/tt.png" /> </div>');
+      }
+      if (this.activePhrase.phrase == "fly me to the moon let me play among the stars") {
+        $('#banner').append('<div id="hint"><h2 style="font-size:20px;">Looks like you need a hint :)</h2><img id="theImg" src="https://karlmagnus.no/img/sinatra.png" /> </div>');
+      }
+      if (this.activePhrase.phrase == "she says i am the one but the kid is not my son") {
+        $('#banner').append('<div id="hint"><h2 style="font-size:20px;">Looks like you need a hint :)</h2><img id="theImg" src="https://karlmagnus.no/img/mj.png" /> </div>');
+      }
     }
     if (this.missed == 5) {
       game.gameOver();
