@@ -69,10 +69,25 @@ class Game {
       .addClass("lostHeart");
     this.missed++;
     if (this.missed == 4) {
-      var honk = new Audio(
-        "http://soundbible.com/grab.php?id=583&type=mp3"
+      var warning = new Audio(
+        "http://soundbible.com/grab.php?id=1377&type=wav"
       );
-      honk.play();
+      warning.play();
+
+      // Code base from: http://jsfiddle.net/xsATz/1/
+
+      function fadeInOut () {
+        $("img[src$='images/liveHeart.png']").fadeIn(1000, function () {
+          $("img[src$='images/liveHeart.png']").fadeOut(1500, function () {
+            $("img[src$='images/liveHeart.png']").fadeIn(1500, function () {
+                    setTimeout(fadeInOut, 500);
+                });
+            });
+        });
+    }
+    fadeInOut();
+
+     
     }
     if (this.missed == 5) {
       game.gameOver();
