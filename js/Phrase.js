@@ -11,19 +11,22 @@ class Phrase {
     let selectedPhrase = this.phrase;
     let str = "<ul>";
     for (var i = 0; i < selectedPhrase.length; i++) {
-      str +=
-        "<li class='hide letter " +
-        selectedPhrase.charAt(i) +
-        "'>" +
-        selectedPhrase.charAt(i) +
-        "</li>";
-    }
-    str += "</ul>";
-    document.getElementById("phrase").innerHTML = str;
-    document.body.innerHTML = document.body.innerHTML.replace(
-      /hide letter  /g,
-      "hide space"
-    );
+      if (selectedPhrase.charAt(i) !== ' ') {
+        str +=
+            "<li class='hide letter " +
+            selectedPhrase.charAt(i) +
+            "'>" +
+            selectedPhrase.charAt(i) +
+            "</li>";
+      } else {
+        str +=
+            "<li class='hide space'></li>";
+      }
+          
+        }
+      str += "</ul>";
+        document.getElementById("phrase").innerHTML = str;
+    
   }
 
   /* Checks if passed letter is in phrase
