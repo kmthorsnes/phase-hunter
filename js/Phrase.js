@@ -34,15 +34,16 @@ class Phrase {
   }
 
   /**
-  * Displays passed letter on screen after a match is found
-  * @param (string) letter - Letter to display
-  */
+   * Displays passed letter on screen after a match is found
+   * @param (string) letter - Letter to display
+   */
   showMatchedLetter(letter) {
-    $('.hide.letter.'+letter).removeClass().addClass('show');
-    
-    if (!$("li").hasClass('letter') == true) 
-      {
-        game.gameOver();
-      } 
-  };
+    $(".hide.letter." + letter)
+      .removeClass()
+      .addClass("show");
+    // Ends game if there is no letters left to reveal. Identified by their classname,     
+    if (!$("li").hasClass("letter") == true) {
+      game.gameOver();
+    }
+  }
 }
