@@ -156,8 +156,7 @@ class Game {
           $(".wrong")
             .removeClass()
             .addClass("key");
-          game.startGame();
-          game.handleInteraction();
+            game.startGame();
         });
     } else {
       // If player have won the game
@@ -187,60 +186,34 @@ class Game {
           $(".wrong")
             .removeClass()
             .addClass("key");
-          game.startGame();
-          game.handleInteraction();
-        });
+            game.startGame();
+      });
     }
   }
 
-  handleInteraction() {
-    $(".key").click(function() {
-      let pressedKey = $(this).html();
-      if (game.activePhrase.phrase.includes(pressedKey)) {
-        game.activePhrase.showMatchedLetter(pressedKey);
-        $(this)
-          .removeClass()
-          .addClass("chosen");
-        if (game.checkForWin() == true) {
-          game.gameOver();
-        }
-      } else {
-        // Acts if the same incorrect letter NOT have been tried earlier in the session
-        if (!$(this).hasClass("wrong")) {
-          $(this)
-            .removeClass()
-            .addClass("wrong");
-          game.removeLife();
-        }
-      }
-    });
+  
 
-    // EXCEEDS-functionality: Keyboard functionality
-      // Game accepts and reacts to input from keyboard press
-    
-    $("body").keypress(function(e) {
-      let keyboardKey = e.key;
-      // Adds condition that only keystrokes on the letter A-Z. Keyinput of numbers or other characters are counted as a valid guess. Code base from: https://stackoverflow.com/a/14783209 
-      if (keyboardKey.match(/[a-z]/i)) {
-        if (game.activePhrase.phrase.includes(keyboardKey)) {
-          game.activePhrase.showMatchedLetter(keyboardKey);
-          $("button:contains(" + keyboardKey + ")")
-            .removeClass()
-            .addClass("chosen");
-          $("button:contains('Start Game')").removeClass();
-          if (game.checkForWin() == true) {
-            game.gameOver();
-          }
-        } else {
-          if (!$("button:contains(" + keyboardKey + ")").hasClass("wrong")) {
-            $("button:contains(" + keyboardKey + ")")
-              .removeClass()
-              .addClass("wrong");
-            $("button:contains('Start Game')").removeClass();
-            game.removeLife();
-          }
+  handleInteraction(e) {
+    if (game.activePhrase.phrase.includes(e)) {
+      game.activePhrase.showMatchedLetter(e);
+      $("button:contains(" + e + ")")
+        .removeClass()
+        .addClass("chosen");
+      $("button:contains('Start Game')").removeClass();
+      if (game.checkForWin() == true) {
+        game.gameOver();
+      }
+    } else {
+      if (!$("button:contains(" + e + ")").hasClass("wrong")) {
+        $("button:contains(" + e + ")")
+          .removeClass()
+          .addClass("wrong");
+        $("button:contains('Start Game')").removeClass();
+        game.removeLife();
         }
       }
-    });
-  }
-}
+    };
+
+}    // EXCEEDS-functionality: Keyboard functionality
+      // Game accepts and reacts to input from keyboard press
+  
