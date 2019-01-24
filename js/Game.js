@@ -116,7 +116,7 @@ class Game {
         );
       }
     }
-    // If the player miss 5 times, the game is ended.
+    // If the player miss 5 times, the game ends
     if (this.missed == 5) {
       game.gameOver();
     }
@@ -148,7 +148,8 @@ class Game {
           // Removes and replace any lost heart images with live ones.
           $("img[src$='images/lostHeart.png']").attr(
             "src",
-            "images/liveHeart.png");
+            "images/liveHeart.png"
+          );
           // Removes and adds classes to boxes for restarting the game.
           $(".chosen")
             .removeClass()
@@ -156,7 +157,7 @@ class Game {
           $(".wrong")
             .removeClass()
             .addClass("key");
-            game.startGame();
+          game.startGame();
         });
     } else {
       // If player have won the game
@@ -179,19 +180,18 @@ class Game {
           // Removes and replace any lost heart images with live ones.
           $("img[src$='images/lostHeart.png']").attr(
             "src",
-            "images/liveHeart.png");
+            "images/liveHeart.png"
+          );
           $(".chosen")
             .removeClass()
             .addClass("key");
           $(".wrong")
             .removeClass()
             .addClass("key");
-            game.startGame();
-      });
+          game.startGame();
+        });
     }
   }
-
-  
 
   handleInteraction(e) {
     if (game.activePhrase.phrase.includes(e)) {
@@ -210,10 +210,7 @@ class Game {
           .addClass("wrong");
         $("button:contains('Start Game')").removeClass();
         game.removeLife();
-        }
       }
-    };
-
-}    // EXCEEDS-functionality: Keyboard functionality
-      // Game accepts and reacts to input from keyboard press
-  
+    }
+  }
+} 

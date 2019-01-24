@@ -11,22 +11,19 @@ class Phrase {
     let selectedPhrase = this.phrase;
     let str = "<ul>";
     for (var i = 0; i < selectedPhrase.length; i++) {
-      if (selectedPhrase.charAt(i) !== ' ') {
+      if (selectedPhrase.charAt(i) !== " ") {
         str +=
-            "<li class='hide letter " +
-            selectedPhrase.charAt(i) +
-            "'>" +
-            selectedPhrase.charAt(i) +
-            "</li>";
+          "<li class='hide letter " +
+          selectedPhrase.charAt(i) +
+          "'>" +
+          selectedPhrase.charAt(i) +
+          "</li>";
       } else {
-        str +=
-            "<li class='hide space'></li>";
+        str += "<li class='hide space'></li>";
       }
-          
-        }
-      str += "</ul>";
-        document.getElementById("phrase").innerHTML = str;
-    
+    }
+    str += "</ul>";
+    document.getElementById("phrase").innerHTML = str;
   }
 
   /* Checks if passed letter is in phrase
@@ -44,7 +41,7 @@ class Phrase {
     $(".hide.letter." + letter)
       .removeClass()
       .addClass("show");
-    // Ends game if there is no letters left to reveal. Identified by their classname,     
+    // Ends game if there is no letters left to reveal. Identified by their classname,
     if (!$("li").hasClass("letter") == true) {
       game.gameOver();
     }
